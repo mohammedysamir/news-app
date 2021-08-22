@@ -11,7 +11,7 @@ class SplashWidget extends StatelessWidget{
       title: 'Flutter Demo',
       routes: {
         SplashScreen.routeName:(context)=>SplashScreen(),
-        MyHomePage.routeName:(context)=>MyHomePage(title:'News'),
+        MyHomePage.routeName:(context)=>MyHomePage(title:'News App'),
       },
       initialRoute: SplashScreen.routeName,
       theme: ThemeData(
