@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news/BackgroundPattern.dart';
+import 'package:news/Drawer.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -16,6 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // automaticallyImplyLeading: false,
         title: Text(widget.title),
         centerTitle: true,
         toolbarHeight: MediaQuery.of(context).size.height * 0.1,
@@ -25,6 +27,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
+      drawer: DrawerMenu(),
       body: Center(
         child: Stack(
           children: <Widget>[
