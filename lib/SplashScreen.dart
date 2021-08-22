@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:news/Home.dart';
+import 'package:news/Settings.dart';
 void main() => runApp(SplashWidget());
 
 class SplashWidget extends StatelessWidget{
@@ -12,6 +13,7 @@ class SplashWidget extends StatelessWidget{
       routes: {
         SplashScreen.routeName:(context)=>SplashScreen(),
         MyHomePage.routeName:(context)=>MyHomePage(title:'News App'),
+        Settings.routeName:(context)=>Settings(title: 'Settings'),
       },
       initialRoute: SplashScreen.routeName,
       theme: ThemeData(
