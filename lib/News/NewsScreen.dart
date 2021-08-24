@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news/BackgroundPattern.dart';
 import 'package:news/Drawer.dart';
 import 'package:news/News/HomeTabScreen.dart';
 import 'package:news/apis/ApiManager.dart';
@@ -34,21 +35,26 @@ class _NewsScreenState extends State<NewsScreen> {
       drawer: Drawer(
         child: DrawerMenu(),
       ),
-      body: FutureBuilder<SourceResponse>(
-        future: newsfuture,
-        builder: (buildContext,snapShot){
-          if(snapShot.hasData){
-            print('DATA');
-            return HomeTabs(snapShot.data!.sources);
-          }
-          else if(snapShot.hasError){
-            print('NO DATA');
-            return Text('error loading data');
-          }
+      body: Stack(
+        children:[
+          BackgroundPattern(),
+          FutureBuilder<SourceResponse>(
+            future: newsfuture,
+            builder: (buildContext,snapShot){
+              if(snapShot.hasData){
+                print('DATA');
+                return HomeTabs(snapShot.data!.sources);
+              }
+              else if(snapShot.hasError){
+                print('NO DATA');
+                return Text('error loading data');
+              }
 
-          return Center(child: CircularProgressIndicator());
+              return Center(child: CircularProgressIndicator());
 
-        },
+            },
+          ),
+        ]
       ),
 
     );
