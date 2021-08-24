@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
                       child: Expanded(
                         child: Row(
-                          mainAxisAlignment: provider.currentLanguage == "ar"
+                          mainAxisAlignment:  AppConfigProvider.getLanguage() == "ar"
                               ? MainAxisAlignment.end
                               : MainAxisAlignment.start,
                           children: [

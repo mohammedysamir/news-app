@@ -8,8 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() => runApp(SplashWidget());
-
+Future main()async{  WidgetsFlutterBinding.ensureInitialized();await AppConfigProvider.init();runApp(SplashWidget());}
 class SplashWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class SplashWidget extends StatelessWidget{
           title: 'News App',
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          locale: Locale.fromSubtags(languageCode:provider.currentLanguage),
+          locale: Locale.fromSubtags(languageCode: AppConfigProvider.getLanguage() ),
           routes: {
             SplashScreen.routeName: (context) => SplashScreen(),
             MyHomePage.routeName: (context) => MyHomePage(title: 'News App'),

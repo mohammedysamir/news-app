@@ -21,7 +21,7 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<AppConfigProvider>(context);
-    language=provider.currentLanguage=="en"?'English':'العربية';
+    language=AppConfigProvider.getLanguage()=="en"?"English":"العربية";
     return Scaffold(
       appBar: AppBar(
         // automaticallyImplyLeading: false,
