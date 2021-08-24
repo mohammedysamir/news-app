@@ -19,33 +19,35 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<AppConfigProvider>(context);
-    return Directionality(
-      textDirection: TextDirection.ltr,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(AppLocalizations.of(context)!.appTitle),
-          centerTitle: true,
-          toolbarHeight: MediaQuery.of(context).size.height * 0.1,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(45),
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.appTitle),
+        centerTitle: true,
+        toolbarHeight: MediaQuery.of(context).size.height * 0.1,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(45),
           ),
         ),
-        drawer: DrawerMenu(),
-        body: Center(
-          child: Stack(
-            children: <Widget>[
-              BackgroundPattern(),
-              Container(
-                alignment: Alignment.center,
+      ),
+      drawer: DrawerMenu(),
+      body: Center(
+        child: Stack(
+          children: <Widget>[
+            BackgroundPattern(),
+            Container(
+              alignment: Alignment.center,
+              child: Directionality(
+                textDirection: TextDirection.ltr,
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(25,10,25,10),
+                      padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
                       child: Expanded(
                         child: Row(
-                          mainAxisAlignment: provider.currentLanguage=="ar"?MainAxisAlignment.end:MainAxisAlignment.start,
+                          mainAxisAlignment: provider.currentLanguage == "ar"
+                              ? MainAxisAlignment.end
+                              : MainAxisAlignment.start,
                           children: [
                             Text(AppLocalizations.of(context)!.pick,
                                 style: TextStyle(
@@ -64,10 +66,16 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Category(AppLocalizations.of(context)!.sports, 'assets/images/sports.png',
-                                  false, Color.fromARGB(255, 201, 28, 34)),
-                              Category(AppLocalizations.of(context)!.politics, 'assets/images/Politics.png',
-                                  true, Color.fromARGB(255, 0, 62, 144)),
+                              Category(
+                                  AppLocalizations.of(context)!.sports,
+                                  'assets/images/sports.png',
+                                  false,
+                                  Color.fromARGB(255, 201, 28, 34)),
+                              Category(
+                                  AppLocalizations.of(context)!.politics,
+                                  'assets/images/Politics.png',
+                                  true,
+                                  Color.fromARGB(255, 0, 62, 144)),
                             ],
                           ),
                         ),
@@ -76,10 +84,16 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Category(AppLocalizations.of(context)!.health, 'assets/images/health.png',
-                                  false, Color.fromARGB(255, 237, 30, 121)),
-                              Category(AppLocalizations.of(context)!.business, 'assets/images/business.png',
-                                  true, Color.fromARGB(255, 207, 126, 72)),
+                              Category(
+                                  AppLocalizations.of(context)!.health,
+                                  'assets/images/health.png',
+                                  false,
+                                  Color.fromARGB(255, 237, 30, 121)),
+                              Category(
+                                  AppLocalizations.of(context)!.business,
+                                  'assets/images/business.png',
+                                  true,
+                                  Color.fromARGB(255, 207, 126, 72)),
                             ],
                           ),
                         ),
@@ -93,8 +107,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                   'assets/images/environment.png',
                                   false,
                                   Color.fromARGB(255, 72, 130, 207)),
-                              Category(AppLocalizations.of(context)!.science, 'assets/images/science.png',
-                                  true, Color.fromARGB(255, 242, 211, 82)),
+                              Category(
+                                  AppLocalizations.of(context)!.science,
+                                  'assets/images/science.png',
+                                  true,
+                                  Color.fromARGB(255, 242, 211, 82)),
                             ],
                           ),
                         ),
@@ -104,8 +121,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
