@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news/BackgroundPattern.dart';
 import 'package:news/Drawer.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:news/AppConfigProvider.dart';
+import 'package:provider/provider.dart';
 
 class Settings extends StatefulWidget {
   Settings({Key? key, required this.title}) : super(key: key);
@@ -13,14 +16,16 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  static String language = 'English';
+  static late String language;
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<AppConfigProvider>(context);
+    language=AppConfigProvider.getLanguage()=="en"?"English":"العربية";
     return Scaffold(
       appBar: AppBar(
         // automaticallyImplyLeading: false,
-        title: Text(widget.title),
+        title: Text(AppLocalizations.of(context)!.settings),
         centerTitle: true,
         toolbarHeight: MediaQuery.of(context).size.height * 0.1,
         shape: RoundedRectangleBorder(
@@ -40,7 +45,7 @@ class _SettingsState extends State<Settings> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(25.0),
-                    child: Text('Language',
+                    child: Text(AppLocalizations.of(context)!.language,
                         style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
@@ -73,9 +78,12 @@ class _SettingsState extends State<Settings> {
                             onChanged: (String? newValue) {
                               setState(() {
                                 language = newValue!;
+                                if(language == 'English')
+                                provider.changeLanguage("en");
+                                else provider.changeLanguage("ar");
                               });
                             },
-                            items: <String>['English', 'Arabic']
+                            items: <String>['English', 'العربية']
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,

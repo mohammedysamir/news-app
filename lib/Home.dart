@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:news/BackgroundPattern.dart';
 import 'package:news/Drawer.dart';
+import 'package:news/AppConfigProvider.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key, required this.title}) : super(key: key);
@@ -15,10 +18,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       appBar: AppBar(
-        // automaticallyImplyLeading: false,
-        title: Text(widget.title),
+        title: Text(AppLocalizations.of(context)!.appTitle),
         centerTitle: true,
         toolbarHeight: MediaQuery.of(context).size.height * 0.1,
         shape: RoundedRectangleBorder(
@@ -34,62 +37,89 @@ class _MyHomePageState extends State<MyHomePage> {
             BackgroundPattern(),
             Container(
               alignment: Alignment.center,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text('Pick your category\nof interest',
-                        style: TextStyle(
-                            fontSize: 26,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 79, 90, 105)),
-                        textAlign: TextAlign.start),
-                  ),
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
+              child: Directionality(
+                textDirection: TextDirection.ltr,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
+                      child: Expanded(
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment:  AppConfigProvider.getLanguage() == "ar"
+                              ? MainAxisAlignment.end
+                              : MainAxisAlignment.start,
                           children: [
-                            Category('Sports', 'assets/images/sports.png',
-                                false, Color.fromARGB(255, 201, 28, 34)),
-                            Category('Politics', 'assets/images/Politics.png',
-                                true, Color.fromARGB(255, 0, 62, 144)),
+                            Text(AppLocalizations.of(context)!.pick,
+                                style: TextStyle(
+                                    fontSize: 26,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color.fromARGB(255, 79, 90, 105)),
+                                textAlign: TextAlign.start),
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Category('Health', 'assets/images/health.png',
-                                false, Color.fromARGB(255, 237, 30, 121)),
-                            Category('Business', 'assets/images/business.png',
-                                true, Color.fromARGB(255, 207, 126, 72)),
-                          ],
+                    ),
+                    Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Category(
+                                  AppLocalizations.of(context)!.sports,
+                                  'assets/images/sports.png',
+                                  false,
+                                  Color.fromARGB(255, 201, 28, 34)),
+                              Category(
+                                  AppLocalizations.of(context)!.politics,
+                                  'assets/images/Politics.png',
+                                  true,
+                                  Color.fromARGB(255, 0, 62, 144)),
+                            ],
+                          ),
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Category(
-                                'Environment',
-                                'assets/images/environment.png',
-                                false,
-                                Color.fromARGB(255, 72, 130, 207)),
-                            Category('Science', 'assets/images/science.png',
-                                true, Color.fromARGB(255, 242, 211, 82)),
-                          ],
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Category(
+                                  AppLocalizations.of(context)!.health,
+                                  'assets/images/health.png',
+                                  false,
+                                  Color.fromARGB(255, 237, 30, 121)),
+                              Category(
+                                  AppLocalizations.of(context)!.business,
+                                  'assets/images/business.png',
+                                  true,
+                                  Color.fromARGB(255, 207, 126, 72)),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Category(
+                                  AppLocalizations.of(context)!.environment,
+                                  'assets/images/environment.png',
+                                  false,
+                                  Color.fromARGB(255, 72, 130, 207)),
+                              Category(
+                                  AppLocalizations.of(context)!.science,
+                                  'assets/images/science.png',
+                                  true,
+                                  Color.fromARGB(255, 242, 211, 82)),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                ),
               ),
             ),
           ],
