@@ -1,0 +1,16 @@
+{
+  "@@locale": "ar",
+  "appTitle": "برنامج الاخبار",
+  "pick": "اختر موضوعك المفضل",
+  "categories": "المواضيع",
+  "sports": "الرياضة",
+  "politics": "السياسة",
+  "health": "الصحة",
+  "business": "الاعمال",
+  "environment": "البيئة",
+  "science": "العلوم",
+  "language": "اللغة",
+  "settings": "الضبط",
+  "english": "الانجليزية",
+  "arabic": "العربية"
+}
