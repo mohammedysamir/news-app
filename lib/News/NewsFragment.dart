@@ -31,7 +31,7 @@ class _NewsFragmentState extends State<NewsFragment> {
             return ListView.builder(
                 itemCount: snapshot.data!.articles.length,
                 itemBuilder: (context,index){
-                  return NewListItem(snapshot.data!.articles[index]);
+                  return NewListItem(snapshot.data!.articles[index],context);
                 });
           }
           else if(snapshot.hasError){
