@@ -3,13 +3,13 @@ import 'package:news/Drawer.dart';
 import 'package:news/News/HomeTabScreen.dart';
 import 'package:news/apis/ApiManager.dart';
 import 'package:news/model/SourceResponse.dart';
-class NewsPage extends StatefulWidget {
-  static const ROUTE_NAME="News";
+class NewsScreen extends StatefulWidget {
+  static const routeName="News";
 
   @override
-  _NewsPageState createState() => _NewsPageState();
+  _NewsScreenState createState() => _NewsScreenState();
 }
-class _NewsPageState extends State<NewsPage> {
+class _NewsScreenState extends State<NewsScreen> {
   late Future<SourceResponse> newsfuture;
   @override
   void initState() {
