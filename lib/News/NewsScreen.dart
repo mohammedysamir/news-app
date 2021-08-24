@@ -21,9 +21,11 @@ class _NewsScreenState extends State<NewsScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    final args=ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.appTitle),
+        //AppLocalizations.of(context)!.appTitle
+        title: Text(args),
         centerTitle: true,
         toolbarHeight: MediaQuery.of(context).size.height * 0.1,
         shape: RoundedRectangleBorder(
