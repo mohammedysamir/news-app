@@ -142,7 +142,7 @@ class Category extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap:()=>{
-        Navigator.pushNamed(context,NewsScreen.routeName)
+        Navigator.pushNamed(context,NewsScreen.routeName,arguments: this.categoryName)
       },
       child: Container(
         width: 150,

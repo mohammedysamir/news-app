@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:news/BackgroundPattern.dart';
 import 'package:news/Drawer.dart';
 import 'package:news/News/HomeTabScreen.dart';
 import 'package:news/apis/ApiManager.dart';
 import 'package:news/model/SourceResponse.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class NewsScreen extends StatefulWidget {
   static const routeName="News";
 
@@ -18,40 +21,42 @@ class _NewsScreenState extends State<NewsScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    final args=ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
-        // ignore: prefer_const_constructors
-        shape: ContinuousRectangleBorder(
-          // ignore: prefer_const_constructors
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(80),
-                bottomRight: Radius.circular(80)
-            ) ),
-        // ignore: prefer_const_constructors
-        title: Text('Route News',
-          // ignore: prefer_const_constructors
-          style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30.0),
+        //AppLocalizations.of(context)!.appTitle
+        title: Text(args),
+        centerTitle: true,
+        toolbarHeight: MediaQuery.of(context).size.height * 0.1,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(45),
+          ),
         ),
-        centerTitle:true,
       ),
       drawer: Drawer(
         child: DrawerMenu(),
       ),
-      body: FutureBuilder<SourceResponse>(
-        future: newsfuture,
-        builder: (buildContext,snapShot){
-          if(snapShot.hasData){
-            print('DATA');
-            return HomeTabs(snapShot.data!.sources);
-          }
-          else if(snapShot.hasError){
-            print('NO DATA');
-            return Text('error loading data');
-          }
+      body: Stack(
+        children:[
+          BackgroundPattern(),
+          FutureBuilder<SourceResponse>(
+            future: newsfuture,
+            builder: (buildContext,snapShot){
+              if(snapShot.hasData){
+                print('DATA');
+                return HomeTabs(snapShot.data!.sources);
+              }
+              else if(snapShot.hasError){
+                print('NO DATA');
+                return Text('error loading data');
+              }
 
-          return Center(child: CircularProgressIndicator());
+              return Center(child: CircularProgressIndicator());
 
-        },
+            },
+          ),
+        ]
       ),
 
     );
