@@ -5,6 +5,7 @@ import 'package:news/AppConfigProvider.dart';
 import 'package:news/Home.dart';
 import 'package:news/Settings.dart';
 import 'package:provider/provider.dart';
+import 'package:news/News/NewsScreen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -25,6 +26,7 @@ class SplashWidget extends StatelessWidget{
             SplashScreen.routeName: (context) => SplashScreen(),
             MyHomePage.routeName: (context) => MyHomePage(title: 'News App'),
             Settings.routeName: (context) => Settings(title: 'Settings'),
+            NewsScreen.routeName:(context)=>NewsScreen()
           },
           initialRoute: SplashScreen.routeName,
           theme: ThemeData(
