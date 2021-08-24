@@ -1,0 +1,16 @@
+{
+  "@@locale": "en",
+  "appTitle": "News App",
+  "pick": "Pick your categories\nof interest",
+  "sports": "Sports",
+  "categories": "Categories",
+  "politics": "Politics",
+  "health": "Health",
+  "business": "Business",
+  "environment": "Environment",
+  "science": "Science",
+  "language": "Language",
+  "settings": "Settings",
+  "english": "English",
+  "arabic": "Arabic"
+}
