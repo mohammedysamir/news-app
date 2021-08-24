@@ -33,34 +33,40 @@ class ArticleDetails extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
-              alignment: Alignment.bottomLeft,
-              child: Text(
-                article.author,
-                style: TextStyle(
-                    fontWeight: FontWeight.w400, color: Colors.black45),
-              ),
+            child: Row(
+              children: [
+               Expanded(
+                 flex: 3,
+                 child: Container(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        article.author,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400, color: Colors.black45),
+                      ),
+                    ),
+               ), Expanded(
+                 child: Container(
+                      alignment: Alignment.topRight,
+                      child: Text(
+                        article.publishedAt.toString(),
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400, color: Colors.black45),
+                      ),
+                    ),
+               ),
+              ],
             ),
           ),
-          SizedBox(
-            height: 8.0,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              alignment: Alignment.topRight,
-              child: Text(
-                article.publishedAt.toString(),
-                style: TextStyle(
-                    fontWeight: FontWeight.w400, color: Colors.black45),
-              ),
-            ),
-          ),
+          // SizedBox(
+          //   height: 8.0,
+          // ),
+
           Flexible(
               child: Container(
             padding: EdgeInsets.all(8),
             child: Text(
-              article.description,
+              article.content,
               style: TextStyle(fontSize: 20),
             ),
           ))
