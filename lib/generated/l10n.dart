@@ -179,6 +179,16 @@ class S {
       args: [],
     );
   }
+
+  /// `View Full Article`
+  String get viewArticle {
+    return Intl.message(
+      'View Full Article',
+      name: 'viewArticle',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
