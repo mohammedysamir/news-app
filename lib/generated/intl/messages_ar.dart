@@ -33,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "politics": MessageLookupByLibrary.simpleMessage("السياسة"),
         "science": MessageLookupByLibrary.simpleMessage("العلوم"),
         "settings": MessageLookupByLibrary.simpleMessage("الضبط"),
-        "sports": MessageLookupByLibrary.simpleMessage("الرياضة")
+        "sports": MessageLookupByLibrary.simpleMessage("الرياضة"),
+        "viewArticle":
+            MessageLookupByLibrary.simpleMessage("اقرأ المقالة كاملة")
       };
 }
