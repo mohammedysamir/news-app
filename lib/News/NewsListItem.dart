@@ -17,11 +17,14 @@ InkWell NewListItem(Article article, BuildContext context) {
         children: [
           ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
-              child: Image.network(
+              child: article.urlToImage!='null'? Image.network(
                 article.urlToImage,
                 height: 240,
                 fit: BoxFit.cover,
-              )),
+              ):Image.network(
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1200px-No-Image-Placeholder.svg.png',height: 240,fit:BoxFit.fitHeight,
+    )
+          ),
           Text(
             article.source.name,
             textAlign: TextAlign.start,

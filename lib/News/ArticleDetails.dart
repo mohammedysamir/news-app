@@ -31,11 +31,11 @@ class ArticleDetails extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
-                child: Image.network(
+                child: article.urlToImage!='null'?Image.network(
                   article.urlToImage,
                   height: 200,
                   fit: BoxFit.fill,
-                )),
+                ):null),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
