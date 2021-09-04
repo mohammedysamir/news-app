@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:news/BackgroundPattern.dart';
 import 'package:news/Drawer.dart';
 import 'package:news/AppConfigProvider.dart';
-import 'package:provider/provider.dart';
+import 'package:news/News/NewsScreen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -18,7 +18,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
@@ -45,9 +44,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
                       child: Expanded(
                         child: Row(
-                          mainAxisAlignment:  AppConfigProvider.getLanguage() == "ar"
-                              ? MainAxisAlignment.end
-                              : MainAxisAlignment.start,
+                          mainAxisAlignment:
+                              AppConfigProvider.getLanguage() == "ar"
+                                  ? MainAxisAlignment.end
+                                  : MainAxisAlignment.start,
                           children: [
                             Text(AppLocalizations.of(context)!.pick,
                                 style: TextStyle(
@@ -72,8 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                   false,
                                   Color.fromARGB(255, 201, 28, 34)),
                               Category(
-                                  AppLocalizations.of(context)!.politics,
-                                  'assets/images/Politics.png',
+                                  AppLocalizations.of(context)!.technology,
+                                  'assets/images/technology.png',
                                   true,
                                   Color.fromARGB(255, 0, 62, 144)),
                             ],
@@ -103,8 +103,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Category(
-                                  AppLocalizations.of(context)!.environment,
-                                  'assets/images/environment.png',
+                                  AppLocalizations.of(context)!.entertainment,
+                                  'assets/images/entertainment.png',
                                   false,
                                   Color.fromARGB(255, 72, 130, 207)),
                               Category(
@@ -139,43 +139,49 @@ class Category extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 150,
-      height: 170,
-      decoration: BoxDecoration(
-        //if the category is right one then it won't have left border radius and vice versa
-        color: this.color,
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(borderRadius),
-            topRight: Radius.circular(borderRadius),
-            bottomLeft: isRightCategory
-                ? Radius.circular(0)
-                : Radius.circular(borderRadius),
-            bottomRight: isRightCategory
-                ? Radius.circular(borderRadius)
-                : Radius.circular(0)),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Expanded(
-              flex: 3,
-              child: Image.asset(
-                this.imagePath,
-                fit: BoxFit.contain,
+    return InkWell(
+      onTap: () => {
+        Navigator.pushNamed(context, NewsScreen.routeName,
+            arguments: this.categoryName)
+      },
+      child: Container(
+        width: 150,
+        height: 170,
+        decoration: BoxDecoration(
+          //if the category is right one then it won't have left border radius and vice versa
+          color: this.color,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(borderRadius),
+              topRight: Radius.circular(borderRadius),
+              bottomLeft: isRightCategory
+                  ? Radius.circular(0)
+                  : Radius.circular(borderRadius),
+              bottomRight: isRightCategory
+                  ? Radius.circular(borderRadius)
+                  : Radius.circular(0)),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Expanded(
+                flex: 3,
+                child: Image.asset(
+                  this.imagePath,
+                  fit: BoxFit.contain,
+                ),
               ),
-            ),
-            Expanded(
-              child: Text(
-                this.categoryName,
-                style: TextStyle(color: Colors.white, fontSize: 22),
-              ),
-              flex: 1,
-            )
-          ],
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+              Expanded(
+                child: Text(
+                  this.categoryName,
+                  style: TextStyle(color: Colors.white, fontSize: 20),
+                ),
+                flex: 1,
+              )
+            ],
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+          ),
         ),
       ),
     );

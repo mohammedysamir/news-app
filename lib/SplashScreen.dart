@@ -5,6 +5,7 @@ import 'package:news/AppConfigProvider.dart';
 import 'package:news/Home.dart';
 import 'package:news/Settings.dart';
 import 'package:provider/provider.dart';
+import 'package:news/News/NewsScreen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -25,6 +26,7 @@ class SplashWidget extends StatelessWidget{
             SplashScreen.routeName: (context) => SplashScreen(),
             MyHomePage.routeName: (context) => MyHomePage(title: 'News App'),
             Settings.routeName: (context) => Settings(title: 'Settings'),
+            NewsScreen.routeName:(context)=>NewsScreen()
           },
           initialRoute: SplashScreen.routeName,
           theme: ThemeData(
@@ -61,37 +63,15 @@ class _SplashState extends State<SplashScreen> {
         body: Stack(
           children: [
             Container(
-              child: Image.asset("assets/images/pattern.png", fit: BoxFit.fill),
+              child: Image.asset("assets/images/splash.png", fit: BoxFit.fill),
               width: MediaQuery
                   .of(context)
                   .size
                   .width,
-            ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(8.0, 200.0, 8.0, 0),
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset("assets/images/logo.png"),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(8.0, 50.0, 8.0, 0),
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset("assets/images/route.png"),
-                              Text(
-                                "supervised by Mohamed Nabil",
-                                style: TextStyle(
-                                  color: Color.fromARGB(255, 57, 165, 82),
-                                  fontSize: 18,
-                                ),
-                              )
-                            ]),
-                      )
-                    ]),
-              ),
+              height:MediaQuery
+                  .of(context)
+                  .size
+                  .height,
             ),
           ],
         ));

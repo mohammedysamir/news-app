@@ -4,13 +4,14 @@
   "pick": "Pick your categories\nof interest",
   "sports": "Sports",
   "categories": "Categories",
-  "politics": "Politics",
+  "technology": "Technology",
   "health": "Health",
   "business": "Business",
-  "environment": "Environment",
+  "entertainment": "Entertainment",
   "science": "Science",
   "language": "Language",
   "settings": "Settings",
   "english": "English",
-  "arabic": "Arabic"
+  "arabic": "Arabic",
+  "viewArticle": "View Full Article"
 }

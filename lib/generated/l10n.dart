@@ -90,11 +90,11 @@ class S {
     );
   }
 
-  /// `Politics`
-  String get politics {
+  /// `Technology`
+  String get technology {
     return Intl.message(
-      'Politics',
-      name: 'politics',
+      'Technology',
+      name: 'technology',
       desc: '',
       args: [],
     );
@@ -120,11 +120,11 @@ class S {
     );
   }
 
-  /// `Environment`
-  String get environment {
+  /// `Entertainment`
+  String get entertainment {
     return Intl.message(
-      'Environment',
-      name: 'environment',
+      'Entertainment',
+      name: 'entertainment',
       desc: '',
       args: [],
     );
@@ -175,6 +175,16 @@ class S {
     return Intl.message(
       'Arabic',
       name: 'arabic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View Full Article`
+  String get viewArticle {
+    return Intl.message(
+      'View Full Article',
+      name: 'viewArticle',
       desc: '',
       args: [],
     );
