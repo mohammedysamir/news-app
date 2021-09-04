@@ -26,14 +26,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "business": MessageLookupByLibrary.simpleMessage("الاعمال"),
         "categories": MessageLookupByLibrary.simpleMessage("المواضيع"),
         "english": MessageLookupByLibrary.simpleMessage("الانجليزية"),
-        "environment": MessageLookupByLibrary.simpleMessage("البيئة"),
+        "entertainment": MessageLookupByLibrary.simpleMessage("التسلية"),
         "health": MessageLookupByLibrary.simpleMessage("الصحة"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "pick": MessageLookupByLibrary.simpleMessage("اختر موضوعك المفضل"),
-        "politics": MessageLookupByLibrary.simpleMessage("السياسة"),
         "science": MessageLookupByLibrary.simpleMessage("العلوم"),
         "settings": MessageLookupByLibrary.simpleMessage("الضبط"),
         "sports": MessageLookupByLibrary.simpleMessage("الرياضة"),
+        "technology": MessageLookupByLibrary.simpleMessage("تكنولوجيا"),
         "viewArticle":
             MessageLookupByLibrary.simpleMessage("اقرأ المقالة كاملة")
       };

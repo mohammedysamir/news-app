@@ -4,7 +4,6 @@ import 'package:news/BackgroundPattern.dart';
 import 'package:news/Drawer.dart';
 import 'package:news/AppConfigProvider.dart';
 import 'package:news/News/NewsScreen.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -19,7 +18,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<AppConfigProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
@@ -46,9 +44,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
                       child: Expanded(
                         child: Row(
-                          mainAxisAlignment:  AppConfigProvider.getLanguage() == "ar"
-                              ? MainAxisAlignment.end
-                              : MainAxisAlignment.start,
+                          mainAxisAlignment:
+                              AppConfigProvider.getLanguage() == "ar"
+                                  ? MainAxisAlignment.end
+                                  : MainAxisAlignment.start,
                           children: [
                             Text(AppLocalizations.of(context)!.pick,
                                 style: TextStyle(
@@ -73,8 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                   false,
                                   Color.fromARGB(255, 201, 28, 34)),
                               Category(
-                                  AppLocalizations.of(context)!.politics,
-                                  'assets/images/Politics.png',
+                                  AppLocalizations.of(context)!.technology,
+                                  'assets/images/technology.png',
                                   true,
                                   Color.fromARGB(255, 0, 62, 144)),
                             ],
@@ -104,8 +103,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Category(
-                                  AppLocalizations.of(context)!.environment,
-                                  'assets/images/environment.png',
+                                  AppLocalizations.of(context)!.entertainment,
+                                  'assets/images/entertainment.png',
                                   false,
                                   Color.fromARGB(255, 72, 130, 207)),
                               Category(
@@ -141,8 +140,9 @@ class Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap:()=>{
-        Navigator.pushNamed(context,NewsScreen.routeName,arguments: this.categoryName)
+      onTap: () => {
+        Navigator.pushNamed(context, NewsScreen.routeName,
+            arguments: this.categoryName)
       },
       child: Container(
         width: 150,
@@ -174,7 +174,7 @@ class Category extends StatelessWidget {
               Expanded(
                 child: Text(
                   this.categoryName,
-                  style: TextStyle(color: Colors.white, fontSize: 22),
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
                 flex: 1,
               )
