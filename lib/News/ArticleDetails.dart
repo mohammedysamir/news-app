@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:news/model/NewsResponse.dart';
+import 'package:news/AppConfigProvider.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ArticleDetails extends StatelessWidget {
-  late Article article;
+  late final Article article;
 
   ArticleDetails(this.article);
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<AppConfigProvider>(
+        context); //used to identify current language
     return Scaffold(
       appBar: AppBar(
         title: Text(article.title),
@@ -35,33 +41,30 @@ class ArticleDetails extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-               Expanded(
-                 flex: 3,
-                 child: Container(
-                      alignment: Alignment.bottomLeft,
-                      child: Text(
-                        article.author,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400, color: Colors.black45),
-                      ),
+                Expanded(
+                  flex: 3,
+                  child: Container(
+                    alignment: Alignment.bottomLeft,
+                    child: Text(
+                      article.author,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400, color: Colors.black45),
                     ),
-               ), Expanded(
-                 child: Container(
-                      alignment: Alignment.topRight,
-                      child: Text(
-                        article.publishedAt.toString(),
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400, color: Colors.black45),
-                      ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    alignment: Alignment.topRight,
+                    child: Text(
+                      article.publishedAt.toString(),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w400, color: Colors.black45),
                     ),
-               ),
+                  ),
+                ),
               ],
             ),
           ),
-          // SizedBox(
-          //   height: 8.0,
-          // ),
-
           Flexible(
               child: Container(
             padding: EdgeInsets.all(8),
@@ -69,7 +72,28 @@ class ArticleDetails extends StatelessWidget {
               article.content,
               style: TextStyle(fontSize: 20),
             ),
-          ))
+          )),
+          Spacer(),
+          Container(
+            alignment: provider.currentLanguage == "en"
+                ? Alignment.centerRight
+                : Alignment.centerLeft,
+            child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+              InkWell(
+                onTap: ()=>{
+                  print('tap on link'),
+                  launch(article.url)
+                },
+                child: Text(AppLocalizations.of(context)!.viewArticle,
+                    style: TextStyle(
+                        color: Color.fromRGBO(66, 80, 92, 1), fontSize: 14)),
+              ),
+              Icon(
+                Icons.arrow_right,
+                color: Color.fromRGBO(66, 80, 92, 1),
+              )
+            ]),
+          )
         ],
       ),
     );
